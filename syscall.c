@@ -46,8 +46,7 @@ fetchstr(uint addr, char **pp)
 }
 
 // Fetch the nth 32-bit system call argument.
-int
-argint(int n, int *ip)
+int argint(int n, int *ip)
 {
   return fetchint((myproc()->tf->esp) + 4 + 4*n, ip);
 }
@@ -55,8 +54,7 @@ argint(int n, int *ip)
 // Fetch the nth word-sized system call argument as a pointer
 // to a block of memory of size bytes.  Check that the pointer
 // lies within the process address space.
-int
-argptr(int n, char **pp, int size)
+int argptr(int n, char **pp, int size)
 {
   int i;
   struct proc *curproc = myproc();
@@ -73,8 +71,7 @@ argptr(int n, char **pp, int size)
 // Check that the pointer is valid and the string is nul-terminated.
 // (There is no shared writable memory, so the string can't change
 // between this check and being used by the kernel.)
-int
-argstr(int n, char **pp)
+int argstr(int n, char **pp)
 {
   int addr;
   if(argint(n, &addr) < 0)

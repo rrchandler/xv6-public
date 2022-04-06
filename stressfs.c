@@ -44,6 +44,6 @@ main(int argc, char *argv[])
   close(fd);
 
   wait();
-
-  exit();
+  //Modified exit() call to pass in a 0, for no error
+  exit(0);
 }

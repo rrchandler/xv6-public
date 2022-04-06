@@ -9,7 +9,8 @@ main(int argc, char *argv[])
 
   if(argc < 2){
     printf(2, "Usage: mkdir files...\n");
-    exit();
+    //Modified exit() call to pass in a 1, for error
+    exit(1);
   }
 
   for(i = 1; i < argc; i++){
@@ -18,6 +19,6 @@ main(int argc, char *argv[])
       break;
     }
   }
-
-  exit();
+  //Modified exit() call to pass in a 0, for no error
+  exit(0);
 }
