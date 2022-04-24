@@ -33,7 +33,7 @@ main(void)
       //Modified exit() call to pass in a 1, for error
       exit(1);
     }
-    while((wpid=wait()) >= 0 && wpid != pid)
+    while((wpid=wait(0)) >= 0 && wpid != pid)
       printf(1, "zombie!\n");
   }
 }

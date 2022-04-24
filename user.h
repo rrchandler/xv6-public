@@ -5,7 +5,8 @@ struct rtcdate;
 int fork(void);
 // Modified exit() to be void and accept an int
 void exit(int status) __attribute__((noreturn));
-int wait(void);
+//modified wait() to accept exit status
+int wait(int *status);
 int pipe(int*);
 int write(int, const void*, int);
 int read(int, void*, int);
@@ -24,6 +25,8 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
+int waitpid(int pid, int *status);
+
 
 // ulib.c
 int stat(const char*, struct stat*);

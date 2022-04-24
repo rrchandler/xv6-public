@@ -24,10 +24,13 @@ int sys_exit()
   return 0;  // not reached
 }
 
-int
-sys_wait(void)
+int sys_wait(void)
 {
-  return wait();
+  int *status;
+  if (argptr(0, (void*)&status, sizeof(int)) < 0) {
+    return -1;
+  }
+  return wait(status);
 }
 
 int
@@ -92,4 +95,14 @@ sys_uptime(void)
   xticks = ticks;
   release(&tickslock);
   return xticks;
+}
+
+//Added waitpid
+int sys_waitpid(void) {
+  int pid;
+  int *status;
+  if (argint(0, &pid)<0 || argptr(1, (void*)&status, sizeof(int)) < 0)
+    return -1;
+  else
+    return waitpid(pid, status);
 }

@@ -13,8 +13,7 @@
 #include "fs.h"
 #include "fcntl.h"
 
-int
-main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
   int fd, i;
   char path[] = "stressfs0";
@@ -43,7 +42,7 @@ main(int argc, char *argv[])
     read(fd, data, sizeof(data));
   close(fd);
 
-  wait();
+  wait(0);
   //Modified exit() call to pass in a 0, for no error
   exit(0);
 }
